@@ -2,6 +2,7 @@
   "name": "marv-wiki",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://Earth-Router.github.io/Marvwiki",
   "type": "module",
   "scripts": {
     "dev": "vite",
