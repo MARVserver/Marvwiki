@@ -1,9 +1,9 @@
 ---
 title: 生成AIをつかった開発
-categories: [VibeCodeing]
-image: <img width="1024" height="1024" alt="image" src="src/assets/vibecode.png" />
-
+categories: [VibeCoding]
+image: src/assets/vibecode.png
 ---
+
 # 生成AIを活用した開発
 
 ## だれでも知識を付ければマイクラサーバーの開発者になれる話
@@ -18,7 +18,6 @@ image: <img width="1024" height="1024" alt="image" src="src/assets/vibecode.png"
   スマホからでもAIエージェントが自動で開発！！セキュリティにもつかえる！！
 - claude.ai
   コーディング最強!!
-- 
 ## じゃあ全部コードを書かせればいいの？？
 それは違う！！
 セキュリティの知識などは少し必要だが自分の環境から学んだらいい！！
