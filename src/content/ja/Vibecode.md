@@ -1,6 +1,6 @@
 ---
 title: 生成AIをつかった開発
-categories: [VibeCoding]
+categories: [VibeCoding,Ops]
 
 ---
 
