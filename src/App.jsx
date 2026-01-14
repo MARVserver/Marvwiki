@@ -1,10 +1,3 @@
-import { Buffer } from 'buffer';
-
-// Polyfill Buffer for gray-matter
-window.Buffer = Buffer;
-window.global = window;
-window.process = { env: {} };
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { HashRouter as Router, Routes, Route, Link, useParams, Navigate, useNavigate } from 'react-router-dom';
 import { marked } from 'marked';

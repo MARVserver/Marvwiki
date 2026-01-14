@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check, Send, Sparkles } from 'lucide-react';
+import { Copy, Check, Send, Sparkles, Github, MessageCircle } from 'lucide-react';
 
 const PRGenerator = ({ lang = 'ja' }) => {
     const [formData, setFormData] = useState({
