@@ -10,7 +10,6 @@ MARVについての情報やルール、使用するプラグインの情報、�
 
 ## 外部リンク
 - **Discord**: [公式コミュニティ](https://discord.gg/NfYyMnTfj3)
-- **国街宣伝**: [Wiki版掲示板](#/ja/Promotion) / [Discordチャンネル](https://discord.com/channels/1245921816959127673/1443877434561663058)
 - **公式サイト**: [公式サイト](https://marvgame.com)
 - **EarthMAP**: [EarthMAP](https://earthmap.marvgame.com/)
 
@@ -35,8 +34,6 @@ JAVA版・統合版の両方で参加できます。
 
   <h3>Java版 / 統合版 共通</h3>
   <div class="server-address">marvgame.net</div>
-  <p>thirdparty Java ip</p>
-  <div class="server-address">bedwars.love</div>
 
   <p style="margin-top: 1rem;"><strong>統合版ポート:</strong> 19132</p>
 </div>

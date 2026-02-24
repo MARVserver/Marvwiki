@@ -3,9 +3,8 @@ import { HashRouter as Router, Routes, Route, Link, useParams, Navigate, useNavi
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import matter from 'gray-matter';
-import { Book, Menu, Search, ChevronRight, ExternalLink, Github, MessageCircle, Shield, Repeat, Landmark, Home as HomeIcon, Flower, Sun, Leaf, Snowflake, Sparkles, Wand2 } from 'lucide-react';
-import SeasonalEffects from './components/SeasonalEffects';
-import PRGenerator from './components/PRGenerator';
+import { Book, Menu, Search, ChevronRight, ExternalLink, Github, MessageCircle, Shield, Repeat, Landmark, Home as HomeIcon, Flower, Sun, Leaf, Snowflake, Sparkles, Wand2, Sword, FileText, Crosshair, Map, ShieldAlert } from 'lucide-react';
+// import PRGenerator from './components/PRGenerator';
 
 // Wikipedia Infobox Component
 const Infobox = ({ data }) => {
@@ -147,23 +146,18 @@ const SidebarSearch = ({ allPages, currentLang }) => {
 };
 
 // Sidebar Component
-const Sidebar = ({ pages, currentLang, season, setSeason, allPages }) => {
-  const seasons = [
-    { id: 'spring', icon: Flower, label_ja: '春', label_en: 'Spring' },
-    { id: 'summer', icon: Sun, label_ja: '夏', label_en: 'Summer' },
-    { id: 'autumn', icon: Leaf, label_ja: '秋', label_en: 'Autumn' },
-    { id: 'winter', icon: Snowflake, label_ja: '冬', label_en: 'Winter' },
-  ];
+const Sidebar = ({ pages, currentLang, allPages }) => {
 
   return (
     <nav className="sidebar">
       <div className="wiki-logo">
         <Link to={`/${currentLang}/Home`}>
-          <Book size={48} strokeWidth={1} color="#3366cc" />
-          <div style={{ marginTop: '5px', fontWeight: 'bold', fontSize: '1.4rem' }}>
-            <span>Marv</span><span style={{ fontWeight: 'normal' }}>Wiki</span>
+          <Crosshair size={48} strokeWidth={1.5} color="var(--hoi4-text-gold)" />
+          <div style={{ marginTop: '5px', fontWeight: 'bold', fontSize: '1.2rem' }}>
+            <span>MARV</span><span style={{ fontWeight: '300' }}>HQ</span>
           </div>
         </Link>
+        <div style={{ fontSize: '0.6rem', color: 'var(--hoi4-text-muted)', letterSpacing: '4px' }}>WIKI OPERATIONS</div>
       </div>
 
       <SidebarSearch allPages={allPages} currentLang={currentLang} />
@@ -180,25 +174,28 @@ const Sidebar = ({ pages, currentLang, season, setSeason, allPages }) => {
       </div>
 
       <div className="nav-section">
-        <h3>{currentLang === 'ja' ? '案内' : 'Navigation'}</h3>
+        <h3>{currentLang === 'ja' ? 'スタートガイド' : 'Guide'}</h3>
         <ul className="nav-links">
           <li>
-            <Link to={`/${currentLang}/Home`}><HomeIcon size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'メインページ' : 'Main page'}</Link>
+            <Link to={`/${currentLang}/Home`}><HomeIcon size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'メインページ' : 'Main Page'}</Link>
           </li>
           <li>
-            <Link to={`/${currentLang}/Getting-Started`}>{currentLang === 'ja' ? 'スタートガイド' : 'Getting Started'}</Link>
+            <Link to={`/${currentLang}/Getting-Started`}><FileText size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'スタートガイド' : 'Getting Started'}</Link>
           </li>
           <li>
-            <Link to={`/${currentLang}/Rules`}>{currentLang === 'ja' ? 'サーバー基本ルール' : 'Server Rules'}</Link>
+            <Link to={`/${currentLang}/Rules`}><Shield size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'ルール' : 'Server Rules'}</Link>
           </li>
           <li>
-            <Link to={`/${currentLang}/Plugin`}>{currentLang === 'ja' ? 'プラグイン・コマンド' : 'Plugins & Commands'}</Link>
+            <Link to={`/${currentLang}/Plugin`}><Sword size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'プラグイン・コマンド' : 'Plugins & Commands'}</Link>
           </li>
           <li>
-            <Link to={`/${currentLang}/Terms-of-Service`}>{currentLang === 'ja' ? '利用規約' : 'Terms of Service'}</Link>
+            <Link to={`/${currentLang}/QuickShop`}><Repeat size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'チェストショップ' : 'Chest Shop'}</Link>
           </li>
           <li>
-            <Link to={`/${currentLang}/Promotion`}>{currentLang === 'ja' ? '国街宣伝 (Wiki版)' : 'Nation & Town Promotion'}</Link>
+            <Link to={`/${currentLang}/Brewery`}><Flower size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'お酒 (Brewery)' : 'Brewery'}</Link>
+          </li>
+          <li>
+            <Link to={`/${currentLang}/Jobs`}><Landmark size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? '職業システム (/jobs)' : 'Jobs System'}</Link>
           </li>
         </ul>
       </div>
@@ -215,16 +212,26 @@ const Sidebar = ({ pages, currentLang, season, setSeason, allPages }) => {
       </div>
 
       <div className="nav-section">
-        <h3>{currentLang === 'ja' ? '国街' : 'Nations & Towns'}</h3>
+        <h3>{currentLang === 'ja' ? '国家・町' : 'Nations & Towns'}</h3>
         <ul className="nav-links">
           <li>
-            <Link to={`/${currentLang}/category/nations`}><Landmark size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? '国家一覧' : 'Nations List'}</Link>
+            <Link to={`/${currentLang}/Towny`}><Map size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? '街の作り方' : 'Town Guide'}</Link>
           </li>
           <li>
-            <Link to={`/${currentLang}/Promotion`}><Sparkles size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? '掲載申請 / 宣伝' : 'Promotion / PR'}</Link>
+            <Link to={`/${currentLang}/Nation`}><Shield size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? '国家の建国' : 'Nation Guide'}</Link>
+          </li>
+          <li>
+            <Link to={`/${currentLang}/War`} style={{ opacity: 0.7 }}>
+              <Landmark size={14} style={{ marginRight: '5px' }} />
+              {currentLang === 'ja' ? '戦争システム' : 'War System'}
+              <span className="badge-soon" style={{ fontSize: '0.6rem', marginLeft: '5px', verticalAlign: 'middle', padding: '1px 4px', border: '1px solid var(--hoi4-text-muted)', borderRadius: '2px' }}>
+                SOON
+              </span>
+            </Link>
           </li>
         </ul>
       </div>
+
 
       <div className="nav-section">
         <h3>{currentLang === 'ja' ? 'Web連携サービス' : 'Web Services'}</h3>
@@ -239,27 +246,10 @@ const Sidebar = ({ pages, currentLang, season, setSeason, allPages }) => {
         <h3>{currentLang === 'ja' ? '外部リンク' : 'External Links'}</h3>
         <ul className="nav-links">
           <li><a href="https://discord.gg/NfYyMnTfj3" target="_blank" rel="noopener noreferrer"><MessageCircle size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? 'Discord' : 'Discord'}</a></li>
-          <li><a href="https://discord.com/channels/1245921816959127673/1443877434561663058" target="_blank" rel="noopener noreferrer"><MessageCircle size={14} style={{ marginRight: '5px' }} /> {currentLang === 'ja' ? '国街宣伝' : 'Nation & Town Promotion'}</a></li>
-          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"><Github size={14} style={{ marginRight: '5px' }} /> GitHub Source</a></li>
+          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"><Github size={14} style={{ marginRight: '5px' }} /> GitHub Repository</a></li>
         </ul>
       </div>
 
-      <div className="nav-section">
-        <h3>{currentLang === 'ja' ? '季節のエフェクト' : 'Seasonal Effects'}</h3>
-        <div className="season-selector">
-          {seasons.map(s => (
-            <button
-              key={s.id}
-              className={`season-btn ${s.id} ${season === s.id ? 'active' : ''}`}
-              onClick={() => setSeason(season === s.id ? null : s.id)}
-              title={currentLang === 'ja' ? s.label_ja : s.label_en}
-            >
-              <s.icon size={20} />
-              <span>{currentLang === 'ja' ? s.label_ja : s.label_en}</span>
-            </button>
-          ))}
-        </div>
-      </div>
     </nav>
   );
 };
@@ -362,8 +352,6 @@ const WikiPage = ({ allPages }) => {
           ))}
         </div>
       )}
-
-      {id === 'Promotion' && <PRGenerator lang={lang} />}
     </main>
   );
 };
@@ -384,7 +372,6 @@ const CategoryPage = ({ allPages }) => {
   }, [catName, allPages, lang]);
 
   const categoryDisplayNames = {
-    nations: { ja: '国家', en: 'Nations' },
     community: { ja: 'コミュニティ', en: 'Community' },
   };
 
@@ -434,20 +421,22 @@ function App() {
 
 const AppLayout = ({ allPages }) => {
   const { lang = 'ja' } = useParams();
-  const [season, setSeason] = useState(null);
 
   const pages = useMemo(() => {
-    return Object.keys(allPages).filter(key => key.includes(`/${lang}/`)).map(path => {
-      const id = path.split('/').pop().replace('.md', '');
-      const { data } = matter(allPages[path]);
-      return { id, title: data.title || id };
-    });
+    const mainGuidePages = ['Home', 'Getting-Started', 'Rules', 'Plugin', 'QuickShop', 'Brewery', 'Towny', 'Nation', 'Jobs', 'War'];
+    return Object.keys(allPages)
+      .filter(key => key.includes(`/${lang}/`))
+      .map(path => {
+        const id = path.split('/').pop().replace('.md', '');
+        const { data } = matter(allPages[path]);
+        return { id, title: data.title || id };
+      })
+      .filter(page => !mainGuidePages.includes(page.id));
   }, [lang, allPages]);
 
   return (
     <div className="app-container">
-      <SeasonalEffects season={season} />
-      <Sidebar pages={pages} currentLang={lang} season={season} setSeason={setSeason} allPages={allPages} />
+      <Sidebar pages={pages} currentLang={lang} allPages={allPages} />
       <Routes>
         <Route path="category/:catName" element={<CategoryPage allPages={allPages} />} />
         <Route path=":id" element={<WikiPage allPages={allPages} />} />
