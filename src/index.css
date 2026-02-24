@@ -1,17 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@700&family=Roboto+Condensed:wght@400;700&family=Courier+Prime:wght@400;700&display=swap');
 
 :root {
-  --wiki-bg: #ffffff;
-  --wiki-sidebar-bg: #f6f6f6;
-  --wiki-border: #a2a9b1;
-  --wiki-link: #3366cc;
-  --wiki-link-hover: #447ff5;
-  --wiki-text: #202122;
-  --wiki-heading: #000000;
-  --wiki-infobox-bg: #f8f9fa;
-  --wiki-secondary-text: #54595d;
+  /* HOI4 Metallic/Military Palette */
+  --hoi4-panel-bg: #2d2d2d;
+  --hoi4-panel-border: #4a4a4a;
+  --hoi4-panel-bezel: #1a1a1a;
+  --hoi4-button-bg: #3d3d3d;
+  --hoi4-button-hover: #4d4d4d;
+  --hoi4-text-gold: #cbbba0;
+  --hoi4-text-muted: #888888;
+
+  /* Paper/Dossier aesthetic */
+  --wiki-bg: #e8e2d4;
+  /* Aged paper */
+  --wiki-sidebar-bg: #1e1e1e;
+  /* Dark command panel */
+  --wiki-border: #2a2a2a;
+  --wiki-link: #3d5a80;
+  --wiki-link-hover: #293241;
+  --wiki-text: #2c2c2c;
+  --wiki-heading: #1a1a1a;
+  --wiki-infobox-bg: #dfd8c8;
+  --wiki-secondary-text: #5a5a5a;
+
   --header-height: 50px;
-  --sidebar-width: 240px;
+  --sidebar-width: 260px;
 }
 
 * {
@@ -21,11 +34,28 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
   background-color: var(--wiki-sidebar-bg);
   color: var(--wiki-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Tactical Background Pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 20%, #000 150%),
+    url('https://www.transparenttextures.com/patterns/brushed-alum.png');
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
 }
 
 a {
@@ -43,23 +73,25 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   color: var(--wiki-heading);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 h1 {
-  font-size: 1.8rem;
-  border-bottom: 1px solid var(--wiki-border);
+  font-size: 2rem;
+  border-bottom: 2px solid #5a5a5a22;
   padding-bottom: 0.2rem;
   margin-top: 0;
 }
 
 h2 {
   font-size: 1.5rem;
-  border-bottom: 1px solid var(--wiki-border);
+  border-bottom: 1px solid #5a5a5a22;
 }
 
 /* Layout */
@@ -71,23 +103,40 @@ h2 {
 .sidebar {
   width: var(--sidebar-width);
   background: var(--wiki-sidebar-bg);
-  padding: 20px;
-  border-right: 1px solid transparent;
+  padding: 24px;
+  border-right: 4px solid var(--hoi4-panel-border);
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
   flex-shrink: 0;
+  box-shadow: inset -5px 0 15px rgba(0, 0, 0, 0.5), 5px 0 20px rgba(0, 0, 0, 0.3);
+  color: var(--hoi4-text-gold);
 }
 
 .main-content {
   flex-grow: 1;
   background: var(--wiki-bg);
-  padding: 40px 60px;
+  padding: 60px 80px;
   max-width: 1200px;
   min-height: 100vh;
-  border-left: 1px solid var(--wiki-border);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
   margin-right: auto;
+  position: relative;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.05);
+}
+
+/* Paper Texture */
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 /* Wikipedia aesthetic elements */
@@ -110,13 +159,40 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-.nav-section h3 {
-  font-size: 0.8rem;
+.wiki-logo {
+  font-family: 'Roboto Condensed', serif;
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: var(--hoi4-text-gold);
   text-transform: uppercase;
-  color: var(--wiki-secondary-text);
-  border-bottom: 1px solid var(--wiki-border);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid var(--hoi4-panel-border);
+  padding-bottom: 20px;
+}
+
+.wiki-logo img {
+  width: 120px;
+  height: auto;
+  filter: sepia(0.5) contrast(1.2) brightness(0.8);
+}
+
+.nav-section {
+  margin-bottom: 2rem;
+}
+
+.nav-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--hoi4-text-muted);
+  border-bottom: 1px solid var(--hoi4-panel-border);
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .nav-links {
@@ -124,14 +200,31 @@ h2 {
 }
 
 .nav-links li {
-  margin-bottom: 4px;
-  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  color: var(--hoi4-text-gold);
+  transition: all 0.2s;
+  display: block;
+  padding: 4px 0;
+}
+
+.nav-links a:hover {
+  color: white;
+  text-decoration: none;
+  transform: translateX(5px);
 }
 
 /* Search Box */
 .sidebar-search {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  background: var(--hoi4-panel-bezel);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--hoi4-panel-border);
 }
 
 .search-input-container {
@@ -149,30 +242,33 @@ h2 {
 
 .search-input {
   width: 100%;
-  padding: 8px 12px 8px 32px;
-  border: 1px solid var(--wiki-border);
-  border-radius: 4px;
-  font-size: 0.85rem;
-  background: white;
+  padding: 10px 12px 10px 32px;
+  border: 1px solid #111;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  background: #1a1a1a;
+  color: #00ff00;
+  /* Radar/Terminal green */
+  font-family: 'Courier Prime', monospace;
   transition: all 0.2s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--wiki-link);
-  box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.1);
+  border-color: #33bb33;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .search-results-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 5px);
   left: 0;
   right: 0;
-  background: white;
-  border: 1px solid var(--wiki-border);
-  border-top: none;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #252525;
+  border: 1px solid #444;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   max-height: 300px;
   overflow-y: auto;
@@ -180,10 +276,18 @@ h2 {
 
 .search-result-item {
   display: block;
-  padding: 8px 12px;
-  font-size: 0.85rem;
-  color: var(--wiki-text);
-  border-bottom: 1px solid #f0f0f0;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-bottom: 1px solid #333;
+  transition: all 0.2s;
+}
+
+.search-result-item:hover {
+  background: #333;
+  color: white;
+  text-decoration: none;
+  padding-left: 20px;
 }
 
 .search-result-item:last-child {
@@ -260,25 +364,28 @@ h2 {
 
 .lucky-btn {
   width: 100%;
-  margin-top: 8px;
-  padding: 6px;
-  background: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  color: #666;
+  margin-top: 12px;
+  padding: 10px;
+  background: var(--hoi4-button-bg);
+  border: 1px solid var(--hoi4-panel-border);
+  border-radius: 2px;
+  font-size: 0.8rem;
+  color: var(--hoi4-text-gold);
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .lucky-btn:hover {
-  background: #e9ecef;
-  border-color: #ccc;
-  color: #333;
+  background: var(--hoi4-button-hover);
+  border-color: #666;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Content Area */
@@ -290,25 +397,44 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* Infobox */
+/* Infobox (Command Dossier) */
 .infobox {
   float: right;
-  width: 300px;
+  width: 320px;
   background-color: var(--wiki-infobox-bg);
-  border: 1px solid var(--wiki-border);
-  margin: 0 0 1rem 1rem;
-  padding: 0.5rem;
+  border: 2px solid #5a5a5a;
+  margin: 0 0 1.5rem 1.5rem;
+  padding: 0;
   font-size: 0.85rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: 'Courier Prime', monospace;
+}
+
+.infobox::after {
+  content: "TOP SECRET";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.6rem;
+  color: #d33;
+  border: 1px solid #d33;
+  padding: 2px 4px;
+  transform: rotate(15deg);
+  font-weight: bold;
+  opacity: 0.6;
 }
 
 .infobox-title {
   text-align: center;
   font-weight: bold;
   font-size: 1.1rem;
-  background: #eaecf0;
-  padding: 5px;
-  margin: -0.5rem -0.5rem 0.5rem -0.5rem;
+  background: #2d2d2d;
+  color: var(--hoi4-text-gold);
+  padding: 10px;
+  margin: 0;
+  text-transform: uppercase;
+  border-bottom: 2px solid #5a5a5a;
 }
 
 .infobox-image {
@@ -319,6 +445,34 @@ h2 {
 .infobox-image img {
   max-width: 100%;
   height: auto;
+}
+
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+/* Red Stamp Style for "Soon" badges */
+.badge-soon {
+  display: inline-block;
+  color: #b22222;
+  /* Ink Red */
+  border: 2px solid #b22222;
+  padding: 1px 6px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transform: rotate(-10deg);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  letter-spacing: 1px;
+  margin-left: 8px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .infobox-row {
@@ -339,12 +493,13 @@ h2 {
 
 /* TOC */
 .toc {
-  background: var(--wiki-infobox-bg);
-  border: 1px solid var(--wiki-border);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px dashed #5a5a5a;
   display: table;
-  padding: 15px;
+  padding: 20px;
   margin: 1.5rem 0;
   font-size: 0.9rem;
+  font-family: 'Courier Prime', monospace;
 }
 
 .toc-title {
@@ -664,31 +819,6 @@ h2 {
   align-items: flex-start;
   font-size: 0.85rem;
   color: #3366cc;
-}
-
-.season-selector {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 10px;
-}
-
-.season-btn {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
-.season-btn.active {
-  background: var(--wiki-link);
-  color: white;
-  border-color: var(--wiki-link);
 }
 
 @media (max-width: 900px) {

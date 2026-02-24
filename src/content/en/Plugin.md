@@ -27,8 +27,8 @@ Commands to make your life on the server easier.
 
 ### Useful Features
 - `/ec`: Open Ender Chest
-- `/nick {name}`: Set your nickname
 - `/sethome {name}` / `/home {name}`: Home point setting and teleportation
+- `/tfly`: Enable flight within town territory (requires permission)
 
 ---
 
@@ -42,12 +42,11 @@ Commands for trading and financial management.
 - `/deposit`: Exchange item currency for balance (use `stack` or `all` for bulk)
 
 ### Shops
-- `/shop` / `/market`: Open the main official shop (GUI)
+- `/shop`: Open the main official shop (GUI)
 - **QuickShop (Chest Shops)**: 
-  - `/qs create`: Create a chest shop with the item in hand
-  - `/qs buy`: Switch shop to "Buy" mode
-  - `/qs sell`: Switch shop to "Sell" mode
-  - `/qs price {amount}`: Set the price
+  - [Detailed guide here](#/en/QuickShop)
+- **Jobs System (/jobs)**:
+  - [Detailed guide here](#/en/Jobs)
 
 ---
 
@@ -74,22 +73,6 @@ Create groups like companies, political parties, or militaries.
 ## 5. Towny (Towns & Nations)
 The main system for large-scale land protection and nation management.
 
-### Town Commands
-- `/town create {town_name}`: Create a new town
-- `/town deposit {amount}`: Deposit money into the town bank (needed for upkeep)
-- `/town claim`: Claim the current chunk as town territory
-- `/town invite {player}`: Invite a resident
-- `/town leave`: Leave your town
+- **Town Management**: [Detailed Town Guide here](#/en/Towny)
+- **Nation Founding**: [Detailed Nation Guide here](#/en/Nation)
 
-### Nation Commands
-- `/nation create {nation_name}`: Establish a nation with your town as the capital
-- `/nation deposit {amount}`: Deposit money into the nation bank
-- `/nation invite {town_name}`: Invite another town to your nation
-- `/nation ally {nation_name}`: Form an alliance with another nation
-
-### Plot Commands
-- `/plot forsale {amount}`: Put a plot of town land up for sale to residents
-- `/plot claim`: Purchase a plot that is for sale for personal use
-
-### Nation & Town Promotion
-If you want to promote your town or nation, use the [Wiki Promotion Board](#/en/Promotion) or the [Nation & Town Promotion](https://discord.com/channels/1245921816959127673/1443877434561663058) channel on Discord.
