@@ -2,7 +2,7 @@
   "name": "marvwiki",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://marvserver.github.io/Marvwiki",
+  "homepage": "",
   "type": "module",
   "scripts": {
     "dev": "vite",
